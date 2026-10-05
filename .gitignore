@@ -1,4 +1,5 @@
 .venv/
+.tooling/
 __pycache__/
 .pytest_cache/
 firmware/build/

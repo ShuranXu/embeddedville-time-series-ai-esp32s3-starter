@@ -1,0 +1,2 @@
+# Authoritative functional-validation profile for ESP32-S3 QEMU.
+CONFIG_ESP_DL_REFERENCE_KERNELS=y

@@ -1,0 +1,71 @@
+diff --git a/Kconfig b/Kconfig
+index c1af8b2..864d113 100644
+--- a/Kconfig
++++ b/Kconfig
+@@ -1,4 +1,12 @@
+ menu "ESP-DL Configuration"
++    config ESP_DL_REFERENCE_KERNELS
++        bool "Use portable reference kernels on ESP32-S3"
++        default n
++        help
++            Disable ESP32-S3 PIE V1 acceleration and select ESP-DL's portable
++            C/C++ kernels. This profile is intended for deterministic QEMU
++            functional validation, not physical-device performance claims.
++
+     menu "Vision/Image: Pixel Convert Support"
+         config PIX_CVT_RGB565_TO_RGB565_SUPPORT
+             bool "Support conversions from rgb565 to rgb565."
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9e87bb4..31ef19c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,8 +50,10 @@ elseif(CONFIG_IDF_TARGET_ESP32S2)
+ 
+ elseif(CONFIG_IDF_TARGET_ESP32S3)
+     list(APPEND src_dirs        dl/tool/isa/xtensa)
+-    list(APPEND src_dirs        dl/tool/isa/tie728)
+-    list(APPEND include_dirs    dl/base/isa/tie728)
++    if(NOT CONFIG_ESP_DL_REFERENCE_KERNELS)
++        list(APPEND src_dirs        dl/tool/isa/tie728)
++        list(APPEND include_dirs    dl/base/isa/tie728)
++    endif()
+     list(APPEND include_dirs    dl/base/isa/xtensa)
+ 
+ elseif(CONFIG_IDF_TARGET_ESP32C3)
+diff --git a/cmake/compile_finalize.cmake b/cmake/compile_finalize.cmake
+index 72f84ca..ff8c70f 100644
+--- a/cmake/compile_finalize.cmake
++++ b/cmake/compile_finalize.cmake
+@@ -35,6 +35,10 @@ function(esp_dl_compile_finalize)
+     idf_build_get_property(python PYTHON)
+     idf_build_get_property(reqs ESPDL_COMPILE_REQS)
+     idf_build_get_property(target IDF_TARGET)
++    set(compile_target "${target}")
++    if(CONFIG_ESP_DL_REFERENCE_KERNELS)
++        set(compile_target "generic-c")
++    endif()
+ 
+     set(_ops_yml "${espdl_dir}/spec/ops.yml")
+     set(_kernels_yml "${espdl_dir}/spec/kernels.yml")
+@@ -52,7 +56,7 @@ function(esp_dl_compile_finalize)
+         --ops "${_ops_yml}"
+         --kernels "${_kernels_yml}"
+         --conv-yml "${_conv_yml}"
+-        --target "${target}"
++        --target "${compile_target}"
+         --component-dir "${espdl_dir}"
+         --header "${_header}"
+         --srcs "${_srcs_cmake}"
+diff --git a/dl/dl_define_private.hpp b/dl/dl_define_private.hpp
+index 5c1558e..4e1f32f 100644
+--- a/dl/dl_define_private.hpp
++++ b/dl/dl_define_private.hpp
+@@ -34,7 +34,7 @@
+ #define CONFIG_XTENSA_MAC16_BOOST 0
+ #endif
+ 
+-#if CONFIG_IDF_TARGET_ESP32S3
++#if CONFIG_IDF_TARGET_ESP32S3 && !CONFIG_ESP_DL_REFERENCE_KERNELS
+ #define CONFIG_PIE_V1_BOOST 1
+ #else
+ #define CONFIG_PIE_V1_BOOST 0

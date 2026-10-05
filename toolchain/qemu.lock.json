@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "release": "esp-develop-9.2.2-20260417",
+  "versionOutput": "9.2.2 (esp_develop_9.2.2_20260417)",
+  "assets": {
+    "x86_64-linux-gnu": {
+      "name": "qemu-xtensa-softmmu-esp_develop_9.2.2_20260417-x86_64-linux-gnu.tar.xz",
+      "sha256": "0eecb2a34a5586c0e59110f77b9343b7b336e82fdb0e1a30e1dc1bab8a547e35"
+    },
+    "aarch64-linux-gnu": {
+      "name": "qemu-xtensa-softmmu-esp_develop_9.2.2_20260417-aarch64-linux-gnu.tar.xz",
+      "sha256": "00de5985094c14e47d1b38464a006b8ed64fd0fa7a289c56da24f3a329f65339"
+    }
+  }
+}

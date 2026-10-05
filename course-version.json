@@ -1,12 +1,18 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "courseId": "time-series-ai-esp32s3",
   "courseContract": "2026.10-project-v1",
-  "starterTag": "starter-v1.0.0",
+  "starterTag": "starter-v1.0.1",
   "dataset": "data/baseline/bme280_sample.csv",
   "originalOnnx": "models/original/sensor_lstm.onnx",
   "releaseOnnxFormat": "ONNX opset 18, fixed input 1x24x3",
-  "releaseEspdlFormat": "ESP-DL w8a8, target esp32s3",
-  "evaluatorContract": "2026.10-evaluator-v1"
+  "releaseEspdlFormat": "ESP-DL W8A16, generic C/reference kernels on ESP32-S3 QEMU",
+  "diagnosticEspdlFormat": "ESP-DL W8A8, ESP32-S3 PIE V1 for optional hardware diagnosis",
+  "espIdfCommit": "fcae32885b0296b32044cb99ecbdc50d98dddb83",
+  "espDlVersion": "3.3.13",
+  "espDlComponentHash": "3148b2692a2943d7e35401dc10a181b6ba83515ec70ef51499ac5d2593eef3e2",
+  "espPpqCommit": "e8881cb9ea5ba18d314fe84c9ca2ab23a27da6dd",
+  "qemuRelease": "esp-develop-9.2.2-20260417",
+  "evaluatorContract": "2026.10-evaluator-v2"
 }
 
