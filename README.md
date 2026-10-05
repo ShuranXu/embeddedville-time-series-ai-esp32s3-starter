@@ -1,6 +1,6 @@
 # Time-Series AI on ESP32-S3 — learner starter
 
-> **Draft workspace:** the current ESP32-S3-targeted ESP-DL LSTM does not yet pass the required QEMU parity gate. This repository is versioned for review, but the paid course must not be promoted until that gate passes.
+> **Release-candidate workspace:** the source course's reference-kernel W8A16 LSTM passes the pinned ESP32-S3 QEMU gate. This solution-free starter remains under review until the protected v2 evaluator independently rebuilds and executes a representative submission.
 
 This is the solution-free workspace for EmbeddedVille course `time-series-ai-esp32s3`. It preserves the original BME280 dataset, baseline arrays, checkpoint, ONNX model, metrics, and plots while turning the original scripts into progressive exercises.
 
@@ -29,7 +29,7 @@ make evidence     # collect hashes, metrics, parity, and UART records
 make package      # build a manifest-bound private submission ZIP
 ```
 
-The original ONNX model is a comparison artifact. It does not execute unchanged on the MCU. The release path is PyTorch → corrected opset 18 ONNX → quantized ESP-DL `.espdl` → real ESP-IDF firmware in ESP32-S3 QEMU.
+The original ONNX model is a comparison artifact. It does not execute unchanged on the MCU. The release path is PyTorch → corrected opset 18 ONNX → W8A16 ESP-DL `.espdl` → generic C/reference ESP-DL kernels → real ESP-IDF firmware in ESP32-S3 QEMU. The ESP32-S3 PIE W8A8 build remains a diagnostic/optional-hardware profile, not the authoritative simulator profile.
 
 Physical ESP32-S3/BME280 hardware is optional enrichment. QEMU does not validate BME280 I²C, electrical behavior, radio, energy, or physical real-time latency.
 

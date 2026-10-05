@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "status": "draft",
+  "status": "firmware-passed-evaluator-v2-pending",
   "publicationAllowed": false,
-  "blockingGate": "ESP32-S3-targeted ESP-DL embedded self-test and held-out replay must pass in ESP32-S3 QEMU",
-  "sourceEvidence": "ShuranXu/embeddedville-time-series-ai-esp32s3-source@course-source-v1.0.0:release-evidence/qemu-validation.json"
+  "blockingGate": "Protected evaluator v2 must rebuild and execute a representative submission with protected replay vectors",
+  "sourceEvidence": "ShuranXu/embeddedville-time-series-ai-esp32s3-source@course-source-v1.0.1:release-evidence/qemu-validation.json"
 }
