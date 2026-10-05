@@ -1,0 +1,11 @@
+Per-channel regression metrics on the test set:
+
+temperature_c    MAE=  0.398  RMSE=  0.496  MAPE=  1.71%  R2= 0.946
+humidity_pct     MAE=  1.499  RMSE=  1.949  MAPE=  3.08%  R2= 0.930
+pressure_hpa     MAE=  0.237  RMSE=  0.299  MAPE=  0.02%  R2= 0.974
+
+Naive persistence baseline (predict the previous value):
+
+temperature_c    MAE=  0.612  RMSE=  0.739  MAPE=  2.63%  R2= 0.881  (LSTM MAE  35.0% lower)
+humidity_pct     MAE=  2.506  RMSE=  3.133  MAPE=  5.18%  R2= 0.819  (LSTM MAE  40.2% lower)
+pressure_hpa     MAE=  0.297  RMSE=  0.361  MAPE=  0.03%  R2= 0.962  (LSTM MAE  20.1% lower)

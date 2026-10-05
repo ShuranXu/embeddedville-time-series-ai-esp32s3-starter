@@ -1,0 +1,2 @@
+esp-ppq @ git+https://github.com/espressif/esp-ppq.git@e8881cb9ea5ba18d314fe84c9ca2ab23a27da6dd
+

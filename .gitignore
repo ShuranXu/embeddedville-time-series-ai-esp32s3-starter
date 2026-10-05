@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+firmware/build/
+firmware/managed_components/
+firmware/sdkconfig
+firmware/sdkconfig.old
+models/release/
+outputs/release/
+submission/out/
+*.pyc
+*.log
+

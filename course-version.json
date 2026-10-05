@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "courseId": "time-series-ai-esp32s3",
+  "courseContract": "2026.10-project-v1",
+  "starterTag": "starter-v1.0.0",
+  "dataset": "data/baseline/bme280_sample.csv",
+  "originalOnnx": "models/original/sensor_lstm.onnx",
+  "releaseOnnxFormat": "ONNX opset 18, fixed input 1x24x3",
+  "releaseEspdlFormat": "ESP-DL w8a8, target esp32s3",
+  "evaluatorContract": "2026.10-evaluator-v1"
+}
+
