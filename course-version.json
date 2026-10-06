@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "courseId": "time-series-ai-esp32s3",
   "courseContract": "2026.10-project-v1",
-  "starterTag": "starter-v1.0.1",
+  "starterTag": "starter-v1.0.2",
   "dataset": "data/baseline/bme280_sample.csv",
   "originalOnnx": "models/original/sensor_lstm.onnx",
   "releaseOnnxFormat": "ONNX opset 18, fixed input 1x24x3",

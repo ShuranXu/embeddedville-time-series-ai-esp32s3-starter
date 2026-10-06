@@ -1,19 +1,29 @@
 # Time-Series AI on ESP32-S3 — learner starter
 
-> **Release-candidate workspace:** the source course's reference-kernel W8A16 LSTM passes the pinned ESP32-S3 QEMU gate. This solution-free starter remains under review until the protected v2 evaluator independently rebuilds and executes a representative submission.
+This is the published, solution-free workspace for EmbeddedVille course `time-series-ai-esp32s3`. The pinned W8A16 reference build passes the protected evaluator and ESP32-S3 QEMU replay gate.
 
 This is the solution-free workspace for EmbeddedVille course `time-series-ai-esp32s3`. It preserves the original BME280 dataset, baseline arrays, checkpoint, ONNX model, metrics, and plots while turning the original scripts into progressive exercises.
 
-## Start in Codespaces
+## Start or resume in Codespaces
 
-1. Open this repository at the immutable course tag named in `course-version.json` and choose **Code → Codespaces → Create codespace**.
+1. Launch the exact course release from the link on the EmbeddedVille lab page. The link may resume an existing matching Codespace, so check `make ready` before doing new work.
 2. Wait for the pinned dev container to finish, then run `make ready`.
-3. Codespaces keeps files under `/workspaces` when the browser closes. Use **Stop codespace** when idle; a stopped codespace can be resumed from github.com/codespaces.
-4. Delete a codespace only after pushing or downloading your evidence. Deletion is recoverable only during GitHub's retention window; uncommitted files are not a substitute for a backup.
-5. Compute and storage can incur charges after included quotas. Stop idle environments and review your GitHub billing page.
-6. If the course reports a stale workspace, commit or download learner work, create a fresh codespace from the exact tag in `course-version.json`, then copy only learner-authored files back.
+3. If `make ready` reports a version mismatch, do not force-pull or replace your branch. Commit or download learner-created files, create a fresh Codespace from the course link, and copy only those files into the fresh workspace.
+4. Closing the browser tab does not necessarily stop the Codespace. Stop compute from the Codespaces page when idle. A stopped Codespace normally preserves saved files, but terminal screen contents are not durable evidence.
+5. Delete a Codespace only after pushing or downloading your work. Deletion or retention expiry can remove unpushed files.
+6. Codespaces requires a GitHub account, repository access, a supported browser, internet access, and available quota. Usage can incur compute and storage charges after included quotas; review GitHub billing before launch.
+
+The dev container exposes no public ports and asks only for access to this repository. A rebuild can replace container-installed state, while files saved under `/workspaces` normally remain. Preserve your work before rebuilding or creating a replacement.
 
 GitHub's current lifecycle reference: <https://docs.github.com/en/codespaces/about-codespaces/understanding-the-codespace-lifecycle>
+
+## Choose the lab you are doing
+
+- [Lab 1 — Dataset evidence](labs/lab-1-data-evidence.md)
+- [Lab 2 — Leakage-safe preprocessing](labs/lab-2-preprocessing.md)
+- [Lab 3 — Model and handoff parity](labs/lab-3-model-parity.md)
+- [Lab 4 — ESP32-S3 QEMU replay](labs/lab-4-qemu-replay.md)
+- [Capstone — Predictive Sensor Node](labs/capstone.md)
 
 ## Deterministic commands
 

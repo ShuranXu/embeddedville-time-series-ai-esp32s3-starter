@@ -12,12 +12,25 @@ class ContractTests(unittest.TestCase):
         contract = json.loads((ROOT / "course-version.json").read_text())
         self.assertEqual(contract["courseId"], "time-series-ai-esp32s3")
         self.assertFalse((ROOT / "solutions").exists())
-        self.assertEqual(contract["starterTag"], "starter-v1.0.1")
+        self.assertEqual(contract["starterTag"], "starter-v1.0.2")
         self.assertEqual(contract["evaluatorContract"], "2026.10-evaluator-v2")
 
     def test_original_artifacts_present(self):
         for path in ["data/baseline/bme280_sample.csv", "models/original/best_lstm.pt", "models/original/sensor_lstm.onnx", "outputs/original/01_channels.png", "outputs/original/training_curve.png", "outputs/original/05_predictions.png", "outputs/original/05_metrics.txt"]:
             self.assertTrue((ROOT / path).is_file(), path)
+
+    def test_each_activity_has_a_workspace_entry_guide(self):
+        guides = [
+            "labs/lab-1-data-evidence.md",
+            "labs/lab-2-preprocessing.md",
+            "labs/lab-3-model-parity.md",
+            "labs/lab-4-qemu-replay.md",
+            "labs/capstone.md",
+        ]
+        for path in guides:
+            copy = (ROOT / path).read_text(encoding="utf-8")
+            self.assertIn("make ready", copy, path)
+            self.assertIn("Expected", copy, path)
 
     def test_uart_parser_rejects_claimed_pass_without_fault_case(self):
         with tempfile.TemporaryDirectory() as directory:
